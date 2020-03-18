@@ -1,0 +1,1 @@
+Laborki z algorytmów tekstowych.
