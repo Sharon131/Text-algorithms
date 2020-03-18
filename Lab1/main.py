@@ -1,5 +1,3 @@
-# za dwa tygodnie ocenianie (natępne laby)
-# open file -> encoding dev8
 import re
 import time
 import codecs
@@ -28,8 +26,9 @@ def create_delta(pattern):
     return delta
 
 
-def machine(original, delta):
+def machine(original, pattern):
     q = 0
+    delta = create_delta(pattern)
     found = set()
 
     for s in range(0, len(original)):
@@ -52,8 +51,8 @@ def prefix_function(pattern):
     return pi
 
 
-def kmp(text, pi):
-    # pi = prefix_function(pattern)
+def kmp(text, pattern):
+    pi = prefix_function(pattern)
     q = 0
     s = set()
     for i in range(0, len(text)):
@@ -76,37 +75,85 @@ def test_speed_of_naive(text, pattern):
 
 def test_speed_of_machine(text, pattern):
     start = time.time()
-    create_delta(pattern)
-    machine(text, delta)
+    machine(text, pattern)
     end = time.time()
     return end - start
 
 
 def test_speed_of_kmp(text, pattern):
     start = time.time()
-    pi = prefix_function(pattern)
-    kmp(text, pi)
+    kmp(text, pattern)
     end = time.time()
     return end - start
 
 
-f = codecs.open("1997_714.txt", "r", "utf-8")
-directive_content = f.read()
+def test_speed_of_creating_delta(pattern):
+    start = time.time()
+    create_delta(pattern)
+    end = time.time()
+    return end-start
+
+
+def test_speed_of_creating_pi(pattern):
+    start = time.time()
+    prefix_function(pattern)
+    end = time.time()
+    return end-start
+
+
 original = "abaabaaaaba"
 pattern_eas = "aba"
-pattern = "art"
-pi = prefix_function(pattern)
 pi_eas = prefix_function(pattern_eas)
-delta_eas = create_delta(pattern_eas)
-delta = create_delta(pattern)
 
 print("Wynik z naiwnego algo: " + str(naive(original, pattern_eas)))
-print("Wynik z automatu: " + str(machine(original, delta_eas)))
-print("Tabela pi: " + str(pi_eas))
-print("Wynik z kmp: " + str(kmp(original, pi_eas)))
+print("Wynik z automatu: " + str(machine(original, pattern_eas)))
+print("Wynik z kmp: " + str(kmp(original, pattern_eas)))
 
-print(f"Naive time: {test_speed_of_naive(directive_content, pattern)}")
-print(f"Automat time: {test_speed_of_machine(directive_content, pattern)}")
-print(f"KMP time: {test_speed_of_kmp(directive_content, pattern)}")
+# Zadanie 3
+f = codecs.open("1997_714.txt", "r", "utf-8")
+directive_content = f.read()
+pattern = "art"
+
+print("Szukanie wzoru art w ustawie:")
+naive_res = naive(directive_content, pattern)
+machine_res = machine(directive_content, pattern)
+kmp_res = kmp(directive_content, pattern)
+
+print("Algorytm naiwny: " + str(naive_res))
+print("Algorytm z automatem: " + str(machine_res))
+print("Algorytm kmp: " + str(kmp_res))
 
 f.close()
+# Zadanie 4
+print("Czasy działania wyszukiwania art w ustawie:")
+print("Algorytm naiwny: " + str(test_speed_of_naive(directive_content, pattern)))
+print("Algorytm z automatem: " + str(test_speed_of_machine(directive_content, pattern)))
+print("Algorytm kmp: " + str(test_speed_of_kmp(directive_content, pattern)))
+
+# Zadanie 5
+f = codecs.open("wikipedia-tail-kruszwil.txt", "r", "utf-8")
+wiki_content = f.read()
+
+pattern = "kruszwil"
+print("Czasy działania wyszukiwania kruszwil w wiki:")
+print("Algorytm naiwny: " + str(test_speed_of_naive(wiki_content, pattern)))
+print("Algorytm z automatem: " + str(test_speed_of_machine(wiki_content, pattern)))
+print("Algorytm kmp: " + str(test_speed_of_kmp(wiki_content, pattern)))
+
+f.close()
+
+# Zadanie 6
+text = directive_content
+pattern = "ryczałt"
+print("Czasy działania wyszukiwania " + str(pattern) + " w dyrektywie:")
+print("Algorytm naiwny: " + str(test_speed_of_naive(text, pattern)))
+print("Algorytm z automatem: " + str(test_speed_of_machine(text, pattern)))
+print("Algorytm kmp: " + str(test_speed_of_kmp(text, pattern)))
+print("Liczba znalezionych wzorców: " + str(len(kmp(text, pattern))))
+
+# Zadanie 7
+
+pattern = "ABCD EFGH IJKL MNOP RSTV UWXY Z ABCD EFGH IJKL MNOP RSTV UWXY Z"
+print("Czasy przygotowania dla wzorca " + str(pattern) + ":")
+print("Algorytm z automatem: " + str(test_speed_of_creating_delta(pattern)))
+print("Algorytm kmp: " + str(test_speed_of_creating_pi(pattern)))
