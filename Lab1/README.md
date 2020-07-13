@@ -1,8 +1,8 @@
 ## Laboratorium nr 1
 1. Zaimplementuj algorytmy wyszukiwania wzorców:
-* naiwny
-* automat skończony
-* algorytm KMP
+	* naiwny
+	* automat skończony
+	* algorytm KMP
 2. Zaimplementuj testy porównujące szybkość działania wyżej wymienionych algorytmów.
 3.Znajdź wszystkie wystąpienia wzorca "art" w załączonej ustawie, za pomocą każdego algorytmu.
 4. Porównaj szybkość działania algorytmów dla problemu z p. 3.
