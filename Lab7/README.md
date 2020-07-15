@@ -9,6 +9,6 @@
 
 Możesz założyć, że wprowadzone wyrażenie jest poprawne.
 
-Sugerowany algorytm: automat skończony.
+Sugerowany algorytm: automat skończony.   
 Nie można używać modułów re/regex lub im podobnych.
 

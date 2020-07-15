@@ -1,9 +1,8 @@
 ## Laboratorium nr 3
 
 Zadanie polega na implementacji dwóch algorytmów kompresji:
-
-	* statycznego algorytmu Huffmana (2 punkty)
-	* dynamicznego algorytmu Huffmana (3 punkty)
+* statycznego algorytmu Huffmana (2 punkty)
+* dynamicznego algorytmu Huffmana (3 punkty)
 
 Dla każdego z algorytmów należy wykonać następujące zadania:
 
