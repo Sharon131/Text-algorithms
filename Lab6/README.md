@@ -7,7 +7,7 @@
 5. Porównać czas wyszukiwania wzorca przy użyciu DBF z wyszukiwaniem za pomocą KMP dla różnych długości wzorca (np. jedna litera, jedno słowo, jedno zdanie).\*\*
 
 
-\* Osoby, które nie zaimplementowały drzewa sufiksów w poprzednich zadaniach mogą skorzystać np. [z tej implementacji (w Pythonie)](https://github.com/kvh/Python-Suffix-Tree)
+\* Osoby, które nie zaimplementowały drzewa sufiksów w poprzednich zadaniach mogą skorzystać np. [z tej implementacji (w Pythonie)](https://github.com/kvh/Python-Suffix-Tree)   
 \*\* j.w. dla algorytmu KMP: <https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/>
 
 Rozwiązanie powinno zawierać kod oraz sprawozdanie w formacie PDF lub Jupyter Notebook.
